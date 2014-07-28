@@ -30,7 +30,7 @@ describe OOP::Router do
     end
   
     it "return status 200 when page is succesfully loaded" do
-      env['REQUEST_PATH'] = 'page1'
+      env['PATH_INFO'] = 'page1'
       assert_equal [ 200, {'Content-Type' => 'text/html'}, 'page 1' ], subject.call(env)
     end
     
@@ -42,10 +42,10 @@ describe OOP::Router do
         end
       }
       
-      env['REQUEST_PATH'] = 'page1'
+      env['PATH_INFO'] = 'page1'
       assert_equal [ 200, {'Content-Type' => 'text/html'}, 'page 1' ], subject.call(env)
       
-      env['REQUEST_PATH'] = 'page2'
+      env['PATH_INFO'] = 'page2'
       assert_equal [ 200, {'Content-Type' => 'text/html'}, 'page 2' ], subject.call(env)
     end
   end
